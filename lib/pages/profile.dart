@@ -78,7 +78,6 @@ class _ProfileState extends State<Profile> {
                     Container(
                       width: double.infinity,
                       height: 50,
-                      margin: const EdgeInsets.symmetric(horizontal: 20),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(50),
                           color: Colors.green[800]
@@ -94,7 +93,7 @@ class _ProfileState extends State<Profile> {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 35),
                   ],
                 ),
               ),

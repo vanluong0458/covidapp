@@ -98,7 +98,7 @@ class _DashboardState extends State<Dashboard> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         const Text(
-                          "Thông tin dịch bệnh",
+                          "Thông tin dịch bệnh trong nước",
                           style: TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.bold,
@@ -112,7 +112,7 @@ class _DashboardState extends State<Dashboard> {
                             ));
                           },
                           child: const Text(
-                            "Xem chi tiết",
+                            "Xem thêm",
                             style: TextStyle(
                               fontSize: 14,
                               color: kPrimaryColor,

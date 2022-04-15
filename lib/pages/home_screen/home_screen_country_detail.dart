@@ -34,7 +34,7 @@ class _CountryDetailState extends State<CountryDetail> {
         });
       });
     } else {
-      throw Exception('Failed to load data');
+      throw Exception('Không thể tải dữ liệu');
     }
   }
 

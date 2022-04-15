@@ -1,5 +1,5 @@
-//import 'package:appcovid/constant.dart';
 import 'package:covid_app/data/list_data.dart';
+import 'package:covid_app/pages/qanda.dart';
 import 'package:covid_app/widgets/call.dart';
 import 'package:covid_app/widgets/header.dart';
 import 'package:covid_app/widgets/info_item_images.dart';
@@ -62,7 +62,18 @@ class _HealthState extends State<Health> {
                 title: 'Phòng ngừa',
                 listDataInfors: prevention,
               ),
-              const SizedBox(height: 50,)
+              const SizedBox(height: 20),
+              const Text(
+                'CÁC CÂU HỎI THƯỜNG GẶP',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const QandA()));
+                },
+                child: const Text('Xem ngay')
+              ),
+              const SizedBox(height: 50),
             ],
           ),
       ),

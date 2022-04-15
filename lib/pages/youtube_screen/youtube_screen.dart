@@ -16,7 +16,7 @@ class YouTubeScreen extends StatefulWidget {
 }
 
 class _YouTubeScreenState extends State<YouTubeScreen> {
-  late Channel _channel;
+  Channel? _channel;
   bool _isLoading = false;
   late GlobalKey<RefreshIndicatorState> _refreshKey;
   @override
@@ -37,10 +37,10 @@ class _YouTubeScreenState extends State<YouTubeScreen> {
   _loadMoreVideos() async {
     _isLoading = true;
     List<Video> moreVideos = await APIYoutubeServices.instance
-        .fetchVideosFromPlaylist(playlistId: _channel.uploadPlaylistId);
-    List<Video> allVideos = _channel.videos..addAll(moreVideos);
+        .fetchVideosFromPlaylist(playlistId: _channel!.uploadPlaylistId);
+    List<Video> allVideos = _channel!.videos..addAll(moreVideos);
     setState(() {
-      _channel.videos = allVideos;
+      _channel!.videos = allVideos;
     });
     _isLoading = false;
   }
@@ -55,7 +55,7 @@ class _YouTubeScreenState extends State<YouTubeScreen> {
             description: video.description,
             title: video.title,
             publishedAt: video.publishedAt,
-            profilePictureUrl: _channel.profilePictureUrl,
+            profilePictureUrl: _channel!.profilePictureUrl,
           ),
         ),
       ),
@@ -92,7 +92,7 @@ class _YouTubeScreenState extends State<YouTubeScreen> {
                           backgroundColor: kShadowColor.withOpacity(0.3),
                           radius: 20.0,
                           backgroundImage:
-                              NetworkImage(_channel.profilePictureUrl),
+                              NetworkImage(_channel!.profilePictureUrl),
                         ),
                         const SizedBox(width: 7),
                         Expanded(
@@ -113,7 +113,7 @@ class _YouTubeScreenState extends State<YouTubeScreen> {
                                 child: Row(
                                   children: [
                                     Text(
-                                      _channel.title,
+                                      _channel!.title,
                                       style: kSubTextStyle,
                                     ),
                                     const Padding(
@@ -168,7 +168,7 @@ class _YouTubeScreenState extends State<YouTubeScreen> {
           ? NotificationListener<ScrollNotification>(
               onNotification: (ScrollNotification scrollDetails) {
                 if (!_isLoading &&
-                    _channel.videos.length != int.parse(_channel.videoCount) &&
+                    _channel!.videos.length != int.parse(_channel!.videoCount) &&
                     scrollDetails.metrics.pixels ==
                         scrollDetails.metrics.maxScrollExtent) {
                   _loadMoreVideos();
@@ -181,12 +181,12 @@ class _YouTubeScreenState extends State<YouTubeScreen> {
                 onRefresh: () => _initChannel(),
                 child: SafeArea(
                   child: ListView.builder(
-                    itemCount: 1 + _channel.videos.length,
+                    itemCount: 1 + _channel!.videos.length,
                     itemBuilder: (BuildContext context, int index) {
                       if (index == 0) {
                         return Container();
                       }
-                      Video video = _channel.videos[index - 1];
+                      Video video = _channel!.videos[index - 1];
                       return _buildVideo(video);
                     },
                   ),

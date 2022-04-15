@@ -57,6 +57,7 @@ class _VideoScreenState extends State<VideoScreen> {
                 controller: _controller,
                 showVideoProgressIndicator: true,
                 onReady: () {
+                  // ignore: avoid_print
                   print('Player is ready.');
                 },
               ),

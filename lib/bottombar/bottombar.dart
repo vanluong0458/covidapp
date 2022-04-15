@@ -4,7 +4,6 @@ import 'package:covid_app/pages/dashboard.dart';
 import 'package:covid_app/pages/health.dart';
 import 'package:covid_app/pages/news.dart';
 import 'package:covid_app/pages/profile.dart';
-import 'package:covid_app/pages/qanda.dart';
 import 'package:flutter/material.dart';
 
 class BottomBar extends StatefulWidget {
@@ -20,7 +19,7 @@ class _BottomBarState extends State<BottomBar> {
     const Dashboard(),
     const Health(),
     const NewsScreen(),
-    const QandA(),
+    const AudioScreen(),
     const Profile(),
   ];
   final PageStorageBucket buckets = PageStorageBucket();
@@ -35,10 +34,10 @@ class _BottomBarState extends State<BottomBar> {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.green,
-        child: const Icon(Icons.document_scanner_sharp),
+        child: const Icon(Icons.music_note_rounded),
         onPressed: () {
           setState(() {
-            currentScreen = const NewsScreen();
+            currentScreen = const AudioScreen();
             currentTab = 4;
           });
         },
@@ -114,7 +113,7 @@ class _BottomBarState extends State<BottomBar> {
                     minWidth: 40,
                     onPressed: () {
                       setState(() {
-                        currentScreen = const QandA();
+                        currentScreen = const NewsScreen();
                         currentTab = 2;
                       });
                     },
@@ -122,11 +121,11 @@ class _BottomBarState extends State<BottomBar> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(
-                          Icons.insert_comment_sharp,
+                          Icons.document_scanner_sharp,
                           color: currentTab == 2 ? Colors.green : Colors.grey,
                         ),
                         Text(
-                          "Hỏi đáp",
+                          "Tin tức",
                           style: TextStyle(
                             color: currentTab == 2 ? Colors.green : Colors.grey,
                           ),

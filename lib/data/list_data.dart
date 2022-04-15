@@ -78,7 +78,7 @@ List<Audio> audioList = [
     'assets/music/ghencovy.mp3',
     metas: Metas(
       title: 'Ghen Cô Vy (Vietnamese Version)',
-      artist: 'MIN ,ERIK ,Khắc Hưng',
+      artist: 'MIN, ERIK, Khắc Hưng',
       image: const MetasImage.asset('assets/images/ghencovy.jpg')
     )
   ),

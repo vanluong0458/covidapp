@@ -66,7 +66,7 @@ class _AudioScreenState extends State<AudioScreen> {
 
   Widget bottomPlayContainer(RealtimePlayingInfos realtimePlayingInfos) {
     return Container(
-      height: screenHeight * 0.1,
+      height: screenHeight * 0.12,
       decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),

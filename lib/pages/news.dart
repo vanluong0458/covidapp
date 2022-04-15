@@ -1,5 +1,4 @@
 import 'package:covid_app/constant.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
@@ -9,6 +8,7 @@ import 'package:webfeed/webfeed.dart';
 
 class NewsScreen extends StatefulWidget {
   const NewsScreen({ Key? key }) : super(key: key);
+  final String title = 'RSS Feed Demo';
 
   @override
   State<NewsScreen> createState() => _NewsScreenState();
@@ -16,7 +16,7 @@ class NewsScreen extends StatefulWidget {
 
 class _NewsScreenState extends State<NewsScreen> {
   // ignore: constant_identifier_names
-  static const String FEED_URL = 'https://thanhnien.vn/rss/ban-doc/am-ap-mua-gian-cach-305.rss';
+  static const String FEED_URL = 'https://thanhnien.vn/rss/thoi-su/vuot-qua-covid-19-296.rss';
 
   RssFeed? _feed;
   late String _title;
@@ -90,34 +90,11 @@ class _NewsScreenState extends State<NewsScreen> {
     );
   }
 
-  // dateTime(pubDate) {
-  //   return Text(
-  //     DateFormat("HH:mm - dd/MM/yyyy").format((pubDate)),
-  //     style: const TextStyle(fontSize: 14.0, fontWeight: FontWeight.w400),
-  //     overflow: TextOverflow.ellipsis,
-  //   );
-  // }
-
-  description(description) {
+  dateTime(subtitle) {
     return Text(
-      description,
-      style: const TextStyle(
-          fontSize: 14.5, fontWeight: FontWeight.w500, color: kTitleTextColor),
-      maxLines: 3,
+      DateFormat("HH:mm - dd/MM/yyyy").format((subtitle)),
+      style: const TextStyle(fontSize: 14.0, fontWeight: FontWeight.w400),
       overflow: TextOverflow.ellipsis,
-    );
-  }
-
-  thumbnail(imageUrl) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 10),
-      child: CachedNetworkImage(
-        imageUrl: imageUrl,
-        height: 110,
-        width: 150,
-        alignment: Alignment.center,
-        fit: BoxFit.fill,
-      ),
     );
   }
 
@@ -138,21 +115,17 @@ class _NewsScreenState extends State<NewsScreen> {
               onTap: () => openFeed(item?.link ?? ''),
               child: Row(
                 children: [
-                  thumbnail(item!.content!.images.isNotEmpty
-                      ? item.content!.images.first
-                      : 'https://www.viet247.net/images/noimage_food_viet247.jpg'),
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.all(8),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          title(item.title),
-                          // Padding(
-                          //   padding: const EdgeInsets.symmetric(vertical: 4),
-                          //   child: dateTime(item.pubDate),
-                          // ),
-                          description(item.description),
+                          title(item?.title),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 4),
+                            child: dateTime(item?.pubDate),
+                          ),
                         ],
                       ),
                     ),
@@ -181,7 +154,7 @@ class _NewsScreenState extends State<NewsScreen> {
       ),
       body: isFeedEmpty()
         ? const Center(
-            child: Text('bug rồi')//CircularProgressIndicator(),
+            child: CircularProgressIndicator(),
           )
         : RefreshIndicator(
             key: _refreshKey,

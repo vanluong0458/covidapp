@@ -1,5 +1,4 @@
 import 'package:covid_app/login.dart';
-import 'package:covid_app/pages/news.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 

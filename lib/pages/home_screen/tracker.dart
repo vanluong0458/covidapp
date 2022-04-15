@@ -3,7 +3,6 @@ import 'package:covid_app/pages/home_screen/home_screen_global_detail.dart';
 import 'package:covid_app/pages/home_screen/navigation_option.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-//import 'package:flutter_icons/flutter_icons.dart';
 
 enum NavigationStatus {
   global,

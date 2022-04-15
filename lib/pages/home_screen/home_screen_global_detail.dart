@@ -13,9 +13,6 @@ class GlobalDetail extends StatefulWidget {
   State<GlobalDetail> createState() => _GlobalDetailState();
 }
 
-// Future<GlobalModel>? globalData;
-// var isLoading = false;
-
 class _GlobalDetailState extends State<GlobalDetail> {
   late Future<GlobalModel> globalData;
   var isLoading = false;
@@ -25,7 +22,7 @@ class _GlobalDetailState extends State<GlobalDetail> {
     if (response.statusCode == 200) {
       return GlobalModel.fromJson(jsonDecode(response.body));
     } else {
-      throw Exception('Failed to load data');
+      throw Exception('Không thể tải dữ liệu');
     }
   }
 
