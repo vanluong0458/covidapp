@@ -1,6 +1,7 @@
 import 'package:covid_app/constant.dart';
 import 'package:covid_app/data/list_data.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class InfoItemImages extends StatelessWidget {
   final String title;
@@ -27,8 +28,10 @@ class InfoItemImages extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          Image.asset(
+          SvgPicture.asset(
             listDataInfors[index].img,
+            width: 100,
+            height: 100,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5),

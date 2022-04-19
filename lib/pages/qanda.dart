@@ -15,7 +15,6 @@ class _QandAState extends State<QandA> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-
         width: double.infinity,
         decoration: BoxDecoration(
             gradient: LinearGradient(

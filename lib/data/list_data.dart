@@ -10,65 +10,65 @@ class ListDataInfor {
 
 List<ListDataInfor> symptoms = [
   ListDataInfor(
-    img: "assets/symptoms/headache.png",
+    img: "assets/symptoms/headache.svg",
     description: "Đau đầu",
   ),
   ListDataInfor(
-    img: "assets/symptoms/high_fever.png",
+    img: "assets/symptoms/fever.svg",
     description: "Sốt cao",
   ),
   ListDataInfor(
-    img: "assets/symptoms/cough.png",
+    img: "assets/symptoms/cough.svg",
     description: "Ho",
   ),
   ListDataInfor(
-    img: "assets/symptoms/sore_troath.png",
+    img: "assets/symptoms/breathing.svg",
     description: "Đau họng",
   ),
 ];
 
 List<ListDataInfor> prevention = [
   ListDataInfor(
-    img: "assets/prevention/mask.png",
+    img: "assets/prevention/people.svg",
     description: "Đeo khẩu trang ở nơi đông người",
   ),
   ListDataInfor(
-    img: "assets/prevention/home.png",
+    img: "assets/prevention/work-from-home.svg",
     description: "Làm việc tại nhà (nếu có thể)",
   ),
   ListDataInfor(
-    img: "assets/prevention/wash_hand.png",
+    img: "assets/prevention/washing-hands.svg",
     description: "Rửa tay bằng xà phòng",
   ),
   ListDataInfor(
-    img: "assets/prevention/contact_hand.png",
+    img: "assets/prevention/keep-distance.svg",
     description: "Hạn chế tiếp xúc trực tiếp",
   ),
   ListDataInfor(
-    img: "assets/prevention/protect6.png",
+    img: "assets/prevention/bucket.svg",
     description: "Thường xuyên vệ sinh nhà cửa",
   ),
   ListDataInfor(
-    img: "assets/prevention/no_hand.png",
+    img: "assets/prevention/touch-face.svg",
     description: "Không đưa tay lên mặt",
   ),
 ];
 
 List<ListDataInfor> contagion = [
   ListDataInfor(
-    img: "assets/contagion/air.png",
+    img: "assets/contagion/virus-transmission.svg",
     description: "Giọt bắn khi tiếp xúc gần",
   ),
   ListDataInfor(
-    img: "assets/contagion/personal_contact.png",
+    img: "assets/contagion/patient.svg",
     description: "Tiếp xúc trực tiếp với người bệnh",
   ),
   ListDataInfor(
-    img: "assets/contagion/contaminated.png",
+    img: "assets/contagion/contaminated.svg",
     description: "Tiếp xúc với bề mặt bị nhiễm bẩn",
   ),
   ListDataInfor(
-    img: "assets/contagion/animal_contact.png",
+    img: "assets/contagion/play-with-pet.svg",
     description: "Tiếp xúc với động vật hoang dã",
   ),
 ];
@@ -112,6 +112,38 @@ List<Audio> audioList = [
       title: 'Việt Nam Sẽ Chiến Thắng',
       artist: 'Nhiều ca sĩ',
       image: const MetasImage.asset('assets/images/vietnamsechienthang.jpg')
+    )
+  ),
+  Audio(
+    'assets/music/5kVuotQuaDaiDich-MAM-7065245.mp3',
+    metas: Metas(
+      title: '5k Vượt Qua Đại Dịch',
+      artist: 'M.A.M',
+      image: const MetasImage.asset('assets/images/namkvuotquadaidich.jpg')
+    )
+  ),
+  Audio(
+    'assets/music/ChongDichNhuChongGiac-UngDaiVe-6262561.mp3',
+    metas: Metas(
+      title: 'Chống Dịch Như Chống Giặc',
+      artist: 'Ưng Đại Vệ',
+      image: const MetasImage.asset('assets/images/chongdichnhuchonggiac.jpg')
+    )
+  ),
+  Audio(
+    'assets/music/Chung-Tay-Day-Lui-Covid-19-Do-Tuyet-Nhi.mp3',
+    metas: Metas(
+      title: 'Chung Tay Đẩy Lùi Covid 19',
+      artist: 'Đỗ Tuyết Nhi',
+      image: const MetasImage.asset('assets/images/chungtaydayluicovid.png')
+    )
+  ),
+  Audio(
+    'assets/music/Tien-Covid-Le-Thien-Hieu.mp3',
+    metas: Metas(
+      title: 'Tiễn Covid',
+      artist: 'Lê Thiện Hiếu',
+      image: const MetasImage.asset('assets/images/tiencovid.png')
     )
   ),
   Audio(

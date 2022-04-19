@@ -1,4 +1,6 @@
 import 'package:covid_app/bottombar/bottombar.dart';
+import 'package:covid_app/pages/introduction.dart';
+import 'package:covid_app/resetpassword.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -31,7 +33,7 @@ class _LoginState extends State<Login> {
       debugPrint(_password);
     } else {
       FirebaseAuth.instance.signInWithEmailAndPassword(email: _emailTextController.text, password: _passwordTextController.text).then((value) {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => const BottomBar()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const Introduction()));
       });
     }
   }
@@ -213,6 +215,10 @@ class _LoginState extends State<Login> {
                                     style: TextButton.styleFrom(primary: Colors.white,),
                                   ),
                                 ),
+                              ),
+                              TextButton(
+                                onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const ResetPassword())),
+                                child: const Text("Quên mật khẩu?")
                               ),
                             ],
                           ),

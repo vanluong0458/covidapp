@@ -141,6 +141,7 @@ class _AudioScreenState extends State<AudioScreen> {
   }
 
   Widget playlistItem(int index) {
+  var result = index < 9 ? '0${index + 1}' : '${index + 1}';
     return InkWell(
       onTap: () => audioPlayer.playlistPlayAtIndex(index),
       splashColor: Colors.transparent,
@@ -152,7 +153,7 @@ class _AudioScreenState extends State<AudioScreen> {
           child: Row(
             children: [
               Text(
-                '0${index + 1}',
+                result,
                 style: const TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
