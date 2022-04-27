@@ -26,3 +26,37 @@ class FireAuth {
     });
   }
 }
+
+class Vaccin {
+  final userCurrent = FirebaseAuth.instance.currentUser!;
+  void createUserVaccin(String username, String birthday, String phone, String cccd, String typevaccin) {
+    _createUserVaccin(userCurrent.uid, username, birthday, phone, cccd, typevaccin);
+  }
+  _createUserVaccin(String userId, String username, String birthday, String phone, String cccd, String typevaccin) {
+    var userVaccin = {
+      "username": username,
+      "birthday": birthday,
+      "phone": phone,
+      "cccd": cccd,
+      "typevaccin": typevaccin,
+    };
+    DatabaseReference ref = FirebaseDatabase.instance.ref("uservaccin");
+    ref.child(userId).set(userVaccin);
+  }
+  //var index = 0;
+  _createFamilyVaccin(String userId, String username, String birthday, String phone, String cccd, String typevaccin) {
+    var userVaccin = {
+      "username": username,
+      "birthday": birthday,
+      "phone": phone,
+      "cccd": cccd,
+      "typevaccin": typevaccin,
+    };
+    //index = index + 1;
+    DatabaseReference ref = FirebaseDatabase.instance.ref("uservaccin");
+    ref.child(userId).child('zfamily').child(username).set(userVaccin);
+  }
+  void createFamilyVaccin(String username, String birthday, String phone, String cccd, String typevaccin) {
+    _createFamilyVaccin(userCurrent.uid, username, birthday, phone, cccd, typevaccin);
+  }
+}

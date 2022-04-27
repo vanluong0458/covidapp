@@ -3,7 +3,7 @@ import 'package:covid_app/pages/audio.dart';
 import 'package:covid_app/pages/dashboard.dart';
 import 'package:covid_app/pages/health.dart';
 import 'package:covid_app/pages/news.dart';
-import 'package:covid_app/pages/profile.dart';
+import 'package:covid_app/widgets/sidebar.dart';
 import 'package:flutter/material.dart';
 
 class BottomBar extends StatefulWidget {
@@ -20,7 +20,7 @@ class _BottomBarState extends State<BottomBar> {
     const Health(),
     const NewsScreen(),
     const AudioScreen(),
-    const Profile(),
+    const SideBar(),
   ];
   final PageStorageBucket buckets = PageStorageBucket();
   Widget currentScreen = const Dashboard();
@@ -138,7 +138,7 @@ class _BottomBarState extends State<BottomBar> {
                     minWidth: 40,
                     onPressed: () {
                       setState(() {
-                        currentScreen = const Profile();
+                        currentScreen = const SideBar();
                         currentTab = 3;
                       });
                     },
@@ -146,11 +146,11 @@ class _BottomBarState extends State<BottomBar> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(
-                          Icons.supervised_user_circle,
+                          Icons.menu_outlined,
                           color: currentTab == 3 ? Colors.green : Colors.grey,
                         ),
                         Text(
-                          "Hồ sơ của tôi",
+                          "Khác",
                           style: TextStyle(
                             color: currentTab == 3 ? Colors.green : Colors.grey,
                           ),

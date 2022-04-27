@@ -59,7 +59,7 @@ class MyHeader extends StatelessWidget {
                   Container(), // ???
                 ],
               )
-            )
+            ),
           ],
         ),
       ),

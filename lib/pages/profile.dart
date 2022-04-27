@@ -21,12 +21,17 @@ class _ProfileState extends State<Profile> {
 
   showData() {
     var userid = user.uid;
-    dref.child("${userid}/phone").once().then((snapshot) {
+    dref.child(userid+"/phone").once().then((snapshot) {
       setState(() {
         phone = snapshot.snapshot.value.toString();
       });
     });
-    dref.child("${userid}/username").once().then((snapshot) {
+    // dref.child("${userid}/phone").once().then((snapshot) {
+    //   setState(() {
+    //     phone = snapshot.snapshot.value.toString();
+    //   });
+    // });
+    dref.child(userid+"/username").once().then((snapshot) {
       setState(() {
         name = snapshot.snapshot.value.toString();
       });

@@ -55,8 +55,18 @@ class _CountryDetailState extends State<CountryDetail> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: isLoading
-          ? const Center(
-              child: CircularProgressIndicator(),
+          ? Center(
+              child: Container(
+                  alignment: Alignment.center,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Text('Đang tải dữ liệu', style: TextStyle(fontSize: 18),),
+                      SizedBox(height: 10),
+                      CircularProgressIndicator()
+                    ]
+                  )
+              ),
             )
           : _countryListView(),
     );

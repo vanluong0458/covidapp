@@ -27,7 +27,7 @@ class _ResetPasswordState extends State<ResetPassword> {
     } else {
       const snackBar = SnackBar(
         content: Text(
-          'Vui long kiem tra mail de doi mat khau moi!',
+          'Vui lòng kiểm tra email!',
           style: TextStyle(
             fontSize: 24,
           ),
@@ -53,7 +53,7 @@ class _ResetPasswordState extends State<ResetPassword> {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        elevation: 0,
+        elevation: 0, // Độ cao tạo hiệu ứng bóng
         title: const Text(
           "Đổi Mật Khẩu Mới",
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
@@ -130,13 +130,6 @@ class _ResetPasswordState extends State<ResetPassword> {
                     ),
                   ),
                 ),
-                // reusableTextField("Enter Email Id", Icons.person_outline, false,
-                //     _emailTextController),
-                // firebaseUIButton(context, "Reset Password", () {
-                //   FirebaseAuth.instance
-                //       .sendPasswordResetEmail(email: _emailTextController.text)
-                //       .then((value) => Navigator.of(context).pop());
-                // })
               ],
             ),
         ))),

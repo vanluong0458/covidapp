@@ -63,40 +63,37 @@ class _IntroductionState extends State<Introduction> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        padding: const EdgeInsets.only(bottom: 80),
-        child: PageView(
-          controller: controller,
-          onPageChanged: (index) {
-            setState(() => isLastPage = index == 3);
-          },
-          children: [
-            buildPage(
-              color: Colors.green.shade100,
-              image: 'assets/introduction/news.svg',
-              title: 'XIN CHÀO!',
-              subtitle: 'Chào mừng bạn đến với RCOVI, nơi cập nhật các thông tin liên quan về Covid trên cả nước và quốc tế.'
-            ),
-            buildPage(
-              color: Colors.green.shade100,
-              image: 'assets/introduction/healthcare.svg',
-              title: 'SỨC KHỎE',
-              subtitle: 'Các triệu chứng, nguyên nhân, cách phòng bệnh và các phản hồi thắc mắc về Covid sẽ được cung cấp cho bạn.'
-            ),
-            buildPage(
-              color: Colors.green.shade100,
-              image: 'assets/introduction/news-anchor.svg',
-              title: 'TIN TỨC',
-              subtitle: 'Bạn có thể theo dõi các tin tức liên quan đến tình hình dịch bệnh được chúng tôi cập nhật hàng ngày.'
-            ),
-            buildPage(
-              color: Colors.green.shade100,
-              image: 'assets/introduction/listening.svg',
-              title: 'GIẢI TRÍ',
-              subtitle: 'Một danh sách các bài hát cổ vũ tinh thần người dân chống dịch, giúp bạn có có nhiều năng lượng hơn.'
-            ),
-          ],
-        ),
+      body: PageView(
+        controller: controller,
+        onPageChanged: (index) {
+          setState(() => isLastPage = index == 3);
+        },
+        children: [
+          buildPage(
+            color: Colors.green.shade100,
+            image: 'assets/introduction/news.svg',
+            title: 'XIN CHÀO!',
+            subtitle: 'Chào mừng bạn đến với RCOVI, nơi cập nhật các thông tin liên quan về Covid trên cả nước và quốc tế.'
+          ),
+          buildPage(
+            color: Colors.green.shade100,
+            image: 'assets/introduction/healthcare.svg',
+            title: 'SỨC KHỎE',
+            subtitle: 'Các triệu chứng, nguyên nhân, cách phòng bệnh và các phản hồi thắc mắc về Covid sẽ được cung cấp cho bạn.'
+          ),
+          buildPage(
+            color: Colors.green.shade100,
+            image: 'assets/introduction/news-anchor.svg',
+            title: 'TIN TỨC',
+            subtitle: 'Bạn có thể theo dõi các tin tức liên quan đến tình hình dịch bệnh được chúng tôi cập nhật hàng ngày.'
+          ),
+          buildPage(
+            color: Colors.green.shade100,
+            image: 'assets/introduction/listening.svg',
+            title: 'GIẢI TRÍ',
+            subtitle: 'Một danh sách các bài hát cổ vũ tinh thần người dân chống dịch, giúp bạn có có nhiều năng lượng hơn.'
+          ),
+        ],
       ),
       bottomSheet: isLastPage
       ? TextButton(
@@ -122,7 +119,7 @@ class _IntroductionState extends State<Introduction> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             TextButton(
-              onPressed: () => controller.jumpToPage(2),
+              onPressed: () => controller.jumpToPage(3),
               child: const Text('Skip'),
             ),
             Center(

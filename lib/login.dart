@@ -1,4 +1,3 @@
-import 'package:covid_app/bottombar/bottombar.dart';
 import 'package:covid_app/pages/introduction.dart';
 import 'package:covid_app/resetpassword.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -9,7 +8,7 @@ import 'constant.dart';
 import 'register.dart';
 
 class Login extends StatefulWidget {
-  static const String id = 'mentor sample 1';
+  static const String id = 'login form';
 
   const Login({Key? key}) : super(key: key);
 

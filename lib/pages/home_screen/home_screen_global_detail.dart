@@ -42,8 +42,37 @@ class _GlobalDetailState extends State<GlobalDetail> {
           : FutureBuilder<GlobalModel>(
               future: globalData,
               builder: (context, snapshot) {
-                if (snapshot.hasData ) {
-                  return Padding(
+                if (snapshot.hasError) {
+                  return Center(
+                      child: Container(
+                          alignment: Alignment.center,
+                          child: const Text(
+                        "Vui lòng kiểm tra lại kết nối mạng",
+                        style: TextStyle(color: Colors.red, fontSize: 18),
+                      ),),
+                    );
+                }
+                switch (snapshot.connectionState) {
+                  case ConnectionState.waiting:
+                    return Center(
+                      child: Container(
+                          alignment: Alignment.center,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: const [
+                              Text('Đang tải dữ liệu', style: TextStyle(fontSize: 18),),
+                              SizedBox(height: 10),
+                              CircularProgressIndicator()
+                            ]
+                          )
+                      ),
+                    );
+                  default:
+                    return !snapshot.hasData
+                        ? const Center(
+                            child: Text("Không có dữ liệu", style: TextStyle(fontSize: 18, color: Colors.white)),
+                          )
+                        : Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 12),
@@ -96,13 +125,9 @@ class _GlobalDetailState extends State<GlobalDetail> {
                       ),
                     ),
                   );
-                } else if (snapshot.hasError) {
-                  return Text("${snapshot.error}");
                 }
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              }),
+              }
+            ),
     );
   }
 }

@@ -1,19 +1,18 @@
 import 'dart:convert';
-
-import 'package:covid_app/pages/home_screen/models/country_model.dart';
 import 'package:covid_app/pages/home_screen/models/country_summany.dart';
+import 'package:covid_app/pages/home_screen/models/global_model.dart';
 import 'package:http/http.dart' as http;
 
 class CovidService {
-  Future<CountryModel> getGlobalSummary() async {
-    final data =
-        await http.Client().get(Uri.parse("https://disease.sh/v3/covid-19/countries"));
 
-    if (data.statusCode != 200) throw Exception();
-
-    CountryModel summary = CountryModel.fromJson(json.decode(data.body));
-
-    return summary;
+  Future<GlobalModel> fetchSummaryVNData() async {
+    http.Response response =
+        await http.get(Uri.parse('https://disease.sh/v3/covid-19/countries/vietnam'));
+    if (response.statusCode == 200) {
+      return GlobalModel.fromJson(jsonDecode(response.body));
+    } else {
+      throw Exception('Không thể tải dữ liệu');
+    }
   }
 
   Future<List<CountrySummaryChartModel>> getCountrySummary(String slug) async {
@@ -32,29 +31,4 @@ class CovidService {
     return summaryList;
   }
 
-  Future<CountrySummaryNewModel> getCountrySummaryNew(String slug) async {
-    final response =
-        await http.get(Uri.parse('https://disease.sh/v3/covid-19/countries/' + slug));
-
-    if (response.statusCode == 200) {
-      return CountrySummaryNewModel.fromJson(jsonDecode(response.body));
-    }
-    else {
-      //return null;
-      throw UnimplementedError();
-    }
-  }
-
-  Future<List<CountryModel>> getCountryList() async {
-    final data =
-        await http.Client().get(Uri.parse('https://nntanhung.github.io/countries.json'));
-
-    if (data.statusCode != 200) throw Exception();
-
-    List<CountryModel> countries = (json.decode(data.body) as List)
-        .map((item) => CountryModel.fromJson(item))
-        .toList();
-
-    return countries;
-  }
 }

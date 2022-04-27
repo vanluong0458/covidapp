@@ -46,7 +46,6 @@ dependencies:
   firebase_core: ^1.14.0
   firebase_auth: ^3.3.12
   firebase_database: ^9.0.10
-  youtube_player_flutter: ^8.0.0
   audioplayers: ^0.20.1
   assets_audio_player: ^3.0.4+1
   smooth_page_indicator: ^1.0.0+2
@@ -94,10 +93,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  fonts:
-    - family: Roboto
-      fonts:
-        - asset: fonts/Roboto-Regular.ttf
+  # fonts:
+  #   - family: Roboto
+  #     fonts:
+  #       - asset: fonts/Roboto-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
