@@ -1,6 +1,7 @@
 import 'package:covid_app/constant.dart';
 import 'package:covid_app/pages/vaccinations/add_info.dart';
 import 'package:covid_app/widgets/info_item_vaccin.dart';
+import 'package:covid_app/widgets/one_injection.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
@@ -16,9 +17,10 @@ class PersonalDetail extends StatefulWidget {
 class _PersonalDetailState extends State<PersonalDetail> {
   DatabaseReference dref = FirebaseDatabase.instance.ref("uservaccin");
   final user = FirebaseAuth.instance.currentUser!;
-  var name = "Đang lấy dữ liệu...";
-  var typevaccin = "Đang lấy dữ liệu...";
-  var birthday = "Đang lấy dữ liệu...";
+  var name = "...";
+  var typevaccin = "...";
+  var birthday = "...";
+  //var number;
   
   showData() {
     var userid = user.uid;
@@ -37,6 +39,11 @@ class _PersonalDetailState extends State<PersonalDetail> {
         name = snapshot.snapshot.value.toString();
       });
     });
+    // dref.child(userid+"/number").once().then((snapshot) {
+    //   setState(() {
+    //     number = snapshot.snapshot.value.toString();
+    //   });
+    // });
   }
 
   @override
@@ -45,8 +52,6 @@ class _PersonalDetailState extends State<PersonalDetail> {
     dref = FirebaseDatabase.instance.ref("uservaccin");
     showData();
   }
-
-  
 
   @override
   Widget build(BuildContext context) {
@@ -62,41 +67,53 @@ class _PersonalDetailState extends State<PersonalDetail> {
                 children: [
                   const SizedBox(height: 20),
                   const Text("Danh sách đã khai báo", style: kTitleTextstyle),
-                  // InfoVaccinItem(
-                  //   icon: "assets/icons/username.svg",
-                  //   name: name,
-                  //   typevaccin: typevaccin,
-                  //   birthday: birthday,
+                  InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(builder: (_) => const OneInjection()));
+
+                      // if(number == '1') {
+                      //   Navigator.of(context).push(MaterialPageRoute(builder: (_) => const OneInjection()));
+                      // } else if (number == '2') {
+                      //   Navigator.of(context).push(MaterialPageRoute(builder: (_) => const OneInjection()));
+                      // }
+                    },
+                    child: InfoVaccinItem(
+                      icon: "assets/icons/username.svg",
+                      name: name,
+                      typevaccin: typevaccin,
+                      birthday: birthday,
+                    ),
+                  )
+                  
+                  // FirebaseAnimatedList(
+                  //   shrinkWrap: true,
+                  //   query: dref,
+                  //   itemBuilder: (BuildContext context, DataSnapshot snapshot, Animation animation, int index) {
+                  //     if(snapshot.value != null) {
+                  //       // return ListTile(
+                  //       //   leading: Text(snapshot.value['username'].toString()),
+                  //       //   title: Text(snapshot.value['typevaccin'].toString()),
+                  //       //   subtitle: Text(snapshot.value['dayvaccin'].toString()),
+                  //       // );
+                  //       return InfoVaccinItem(
+                  //         icon: "assets/icons/username.svg",
+                  //         name: name,
+                  //         typevaccin: typevaccin,
+                  //         birthday: birthday,
+                  //       );
+                  //     } else {
+                  //       return Center(
+                  //         child: Container(
+                  //           alignment: Alignment.center,
+                  //           child: const Text(
+                  //             "Vui lòng kiểm tra lại kết nối mạng",
+                  //             style: TextStyle(color: Colors.red, fontSize: 18),
+                  //           ),
+                  //         ),
+                  //       );
+                  //     }
+                  //   }
                   // ),
-                  FirebaseAnimatedList(
-                    shrinkWrap: true,
-                    query: dref,
-                    itemBuilder: (BuildContext context, DataSnapshot snapshot, Animation animation, int index) {
-                      if(snapshot.value != null) {
-                        // return ListTile(
-                        //   leading: Text(snapshot.value['username'].toString()),
-                        //   title: Text(snapshot.value['typevaccin'].toString()),
-                        //   subtitle: Text(snapshot.value['dayvaccin'].toString()),
-                        // );
-                        return InfoVaccinItem(
-                          icon: "assets/icons/username.svg",
-                          name: name,
-                          typevaccin: typevaccin,
-                          birthday: birthday,
-                        );
-                      } else {
-                        return Center(
-                          child: Container(
-                            alignment: Alignment.center,
-                            child: const Text(
-                              "Vui lòng kiểm tra lại kết nối mạng",
-                              style: TextStyle(color: Colors.red, fontSize: 18),
-                            ),
-                          ),
-                        );
-                      }
-                    }
-                  ),
                 ],
               ),
             ),

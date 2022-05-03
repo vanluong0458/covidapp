@@ -16,12 +16,14 @@ class _AddInfoFamilyState extends State<AddInfoFamily> {
   TextEditingController _cccdTextController = TextEditingController();
   TextEditingController _typevaccinTextController = TextEditingController();
   TextEditingController _phoneTextController = TextEditingController();
+  TextEditingController _numberTextController = TextEditingController();
   final _formVaccinationKey = GlobalKey<FormState>();
   String _birthday = '';
   String _userName = '';
   String _cccd = '';
   String _typevaccin = '';
   String _phone = '';
+  String _number = '';
 
   final _vaccin = Vaccin();
 
@@ -33,8 +35,9 @@ class _AddInfoFamilyState extends State<AddInfoFamily> {
       debugPrint(_cccd);
       debugPrint(_typevaccin);
       debugPrint(_phone);
+      debugPrint(_number);
     } else {
-      _vaccin.createFamilyVaccin(_userNameTextController.text, _birthdayTextController.text, _phoneTextController.text, _cccdTextController.text, _typevaccinTextController.text);
+      _vaccin.createFamilyVaccin(_userNameTextController.text, _birthdayTextController.text, _phoneTextController.text, _cccdTextController.text, _numberTextController.text, _typevaccinTextController.text);
     }
   }
 
@@ -46,6 +49,7 @@ class _AddInfoFamilyState extends State<AddInfoFamily> {
     _cccdTextController = TextEditingController();
     _typevaccinTextController = TextEditingController();
     _phoneTextController = TextEditingController();
+    _numberTextController = TextEditingController();
   }
 
   @override
@@ -55,6 +59,7 @@ class _AddInfoFamilyState extends State<AddInfoFamily> {
     _cccdTextController.dispose();
     _typevaccinTextController.dispose();
     _phoneTextController.dispose();
+    _numberTextController.dispose();
     super.dispose();
   }
 
@@ -228,6 +233,37 @@ class _AddInfoFamilyState extends State<AddInfoFamily> {
                             return null;
                           },
                           onChanged: (value) => _cccd = value,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        decoration: BoxDecoration(
+                          border: Border(
+                            top: BorderSide(color: Colors.grey.shade200),
+                            right: BorderSide(color: Colors.grey.shade200),
+                            bottom: BorderSide(color: Colors.grey.shade200),
+                            left: BorderSide(color: Colors.grey.shade200),
+                          ),
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.white
+                        ),
+                        child: TextFormField(
+                          controller: _numberTextController,
+                          decoration: const InputDecoration(
+                              hintText: "Số mũi đã tiêm",
+                              hintStyle: TextStyle(color: Colors.grey),
+                              border: InputBorder.none
+                          ),
+                          validator: (value) {
+                            if (value == null || value.trim().isEmpty) {
+                              return 'Trường này không được để trống!';
+                            }
+                            // Return null if the entered username is valid
+                            return null;
+                          },
+                          onChanged: (value) => _number = value,
                         ),
                       ),
                       const SizedBox(height: 10),

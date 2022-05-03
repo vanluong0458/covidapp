@@ -1,6 +1,7 @@
 import 'package:covid_app/constant.dart';
 import 'package:covid_app/pages/vaccinations/add_info_family.dart';
 import 'package:covid_app/widgets/info_item_vaccin.dart';
+import 'package:covid_app/widgets/one_injection.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
@@ -22,17 +23,19 @@ class _FamilyDetailState extends State<FamilyDetail> {
   
   showData() {
     var userid = user.uid;
-    dref.child(userid+"/zfamily").child('').child('typevaccin').once().then((snapshot) {
+    var key = dref.child(userid).child('afamily').push().key;
+
+    dref.child(userid+"/afamily").child('typevaccin').once().then((snapshot) {
       setState(() {
         typevaccin = snapshot.snapshot.value.toString();
       });
     });
-    dref.child(userid+"/zfamily").child('').child('birthday').once().then((snapshot) {
+    dref.child(userid+"/afamily").child('birthday').once().then((snapshot) {
       setState(() {
         birthday = snapshot.snapshot.value.toString();
       });
     });
-    dref.child(userid+"/zfamily").child('username').once().then((snapshot) {
+    dref.child(userid+"/afamily").child(key!).child('username').once().then((snapshot) {
       setState(() {
         name = snapshot.snapshot.value.toString();
       });
@@ -60,29 +63,28 @@ class _FamilyDetailState extends State<FamilyDetail> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // ElevatedButton(
-                  //   onPressed: () {
-                  //     Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AddInfoFamily(),));
-                  //   },
-                  //   child: const Text('Khai báo')
-                  // ),
                   const SizedBox(height: 20),
                   const Text("Danh sách đã khai báo", style: kTitleTextstyle),
-                  // InfoVaccinItem(
-                  //   icon: "assets/icons/username.svg",
-                  //   name: name,
-                  //   typevaccin: typevaccin,
-                  //   birthday: birthday,
-                  // ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(builder: (_) => const OneInjection()));
+                    },
+                    child: const InfoVaccinItem(
+                      icon: "assets/icons/username.svg",
+                      name: 'Nguyễn Van Hung',
+                      typevaccin: 'Astrazeneca',
+                      birthday: '10/04/1977',
+                    ),
+                  ),
                   FirebaseAnimatedList(
                     shrinkWrap: true,
                     query: dref,
-                    itemBuilder: (BuildContext context, DataSnapshot snapshot, Animation animation, int index) {
+                    itemBuilder: (BuildContext context, DataSnapshot snapshot, Animation<double> animation, int index) {
                       if(snapshot.value != null) {
                         // return ListTile(
-                        //   leading: Text(snapshot.value['username'].toString()),
-                        //   title: Text(snapshot.value['typevaccin'].toString()),
-                        //   subtitle: Text(snapshot.value['dayvaccin'].toString()),
+                        //   leading: Text(snapshot.value['username']),
+                        //   title: Text(snapshot.value['typevaccin']),
+                        //   subtitle: Text(snapshot.value['dayvaccin']),
                         // );
                         return InfoVaccinItem(
                           icon: "assets/icons/username.svg",
