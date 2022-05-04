@@ -39,11 +39,6 @@ class _PersonalDetailState extends State<PersonalDetail> {
         name = snapshot.snapshot.value.toString();
       });
     });
-    // dref.child(userid+"/number").once().then((snapshot) {
-    //   setState(() {
-    //     number = snapshot.snapshot.value.toString();
-    //   });
-    // });
   }
 
   @override
@@ -70,12 +65,6 @@ class _PersonalDetailState extends State<PersonalDetail> {
                   InkWell(
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(builder: (_) => const OneInjection()));
-
-                      // if(number == '1') {
-                      //   Navigator.of(context).push(MaterialPageRoute(builder: (_) => const OneInjection()));
-                      // } else if (number == '2') {
-                      //   Navigator.of(context).push(MaterialPageRoute(builder: (_) => const OneInjection()));
-                      // }
                     },
                     child: InfoVaccinItem(
                       icon: "assets/icons/username.svg",
