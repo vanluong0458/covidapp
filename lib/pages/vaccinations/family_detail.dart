@@ -2,7 +2,6 @@ import 'package:covid_app/constant.dart';
 import 'package:covid_app/pages/vaccinations/add_info_family.dart';
 import 'package:covid_app/widgets/family_injection.dart';
 import 'package:covid_app/widgets/info_item_vaccin.dart';
-import 'package:covid_app/widgets/one_injection.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -61,18 +60,6 @@ class _FamilyDetailState extends State<FamilyDetail> {
                 children: [
                   const SizedBox(height: 20),
                   const Text("Danh sách đã khai báo", style: kTitleTextstyle),
-                  InkWell(
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (_) => const OneInjection()));
-                    },
-                    child: const InfoVaccinItem(
-                      icon: "assets/icons/username.svg",
-                      name: 'Nguyễn Van Hung',
-                      typevaccin: 'Astrazeneca',
-                      birthday: '10/04/1977',
-                    ),
-                  ),
                   FutureBuilder<DatabaseEvent>(
                       future: dref.child(user.uid + "/afamily").once(),
                       builder: (context, snapshot) {
@@ -83,8 +70,23 @@ class _FamilyDetailState extends State<FamilyDetail> {
                                 .map(
                                   (value) => InkWell(
                                     onTap: () {
+                                      var username = value['username'];
+                                      var birthday = value['birthday'];
+                                      var typevaccin = value['typevaccin'];
+                                      var phone = value['phone'];
+                                      var cccd = value['cccd'];
+                                      var number = value['number'];
+                                      print(username);
                                       Navigator.of(context).push(MaterialPageRoute(
-                                          builder: (_) => const FamilyInjection()));
+                                        builder: (_) => FamilyInjection(
+                                          username: username,
+                                          birthday: birthday,
+                                          typevaccin: typevaccin,
+                                          phone: phone,
+                                          cccd: cccd,
+                                          number: number
+                                        )
+                                      ));
                                     },
                                     child: InfoVaccinItem(
                                       icon: "assets/icons/username.svg",

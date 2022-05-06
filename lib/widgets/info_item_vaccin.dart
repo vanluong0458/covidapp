@@ -44,9 +44,9 @@ class InfoVaccinItem extends StatelessWidget {
             Positioned(
               left: 70,
               child: Container(
-                height: 100,
+                height: 120,
                 padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-                width: MediaQuery.of(context).size.width - 100,
+                width: MediaQuery.of(context).size.width - 140,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -56,10 +56,11 @@ class InfoVaccinItem extends StatelessWidget {
                       style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.blue),
                     ),
                     Text(
-                      'Vaccin đã tiêm: '+typevaccin,
+                      'Vaccin đã tiêm:\n'+typevaccin,
                       style: kTitleTextstyle.copyWith(
                         fontSize: 16,
                       ),
+                      softWrap: false,
                     ),
                     Text(
                       'Sinh ngày: '+birthday,
