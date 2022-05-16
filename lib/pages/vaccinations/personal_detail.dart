@@ -4,7 +4,6 @@ import 'package:covid_app/widgets/info_item_vaccin.dart';
 import 'package:covid_app/widgets/one_injection.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 
 class PersonalDetail extends StatefulWidget {
@@ -20,7 +19,6 @@ class _PersonalDetailState extends State<PersonalDetail> {
   var name = "...";
   var typevaccin = "...";
   var birthday = "...";
-  //var number;
   
   showData() {
     var userid = user.uid;
@@ -61,48 +59,31 @@ class _PersonalDetailState extends State<PersonalDetail> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 20),
-                  const Text("Danh sách đã khai báo", style: kTitleTextstyle),
-                  InkWell(
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(builder: (_) => const OneInjection()));
-                    },
-                    child: InfoVaccinItem(
-                      icon: "assets/icons/username.svg",
-                      name: name,
-                      typevaccin: typevaccin,
-                      birthday: birthday,
-                    ),
+                  const Text("Thông tin mũi tiêm đã khai báo", style: kTitleTextstyle),
+                  FutureBuilder<DatabaseEvent>(
+                    future: dref.child(user.uid).once(),
+                    builder: (context, snapshot) {
+                      return snapshot.data?.snapshot.value == null
+                      ? Container(
+                        height: 500,
+                        alignment: Alignment.center,
+                        child: const Center(
+                            child: Text("Không có dữ liệu", style: TextStyle(fontSize: 24, color: Colors.red)),
+                          ),
+                      )
+                      : InkWell(
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(builder: (_) => const OneInjection()));
+                          },
+                          child: InfoVaccinItem(
+                            icon: "assets/icons/username.svg",
+                            name: name,
+                            typevaccin: typevaccin,
+                            birthday: birthday,
+                          ),
+                        );
+                    }
                   )
-                  
-                  // FirebaseAnimatedList(
-                  //   shrinkWrap: true,
-                  //   query: dref,
-                  //   itemBuilder: (BuildContext context, DataSnapshot snapshot, Animation animation, int index) {
-                  //     if(snapshot.value != null) {
-                  //       // return ListTile(
-                  //       //   leading: Text(snapshot.value['username'].toString()),
-                  //       //   title: Text(snapshot.value['typevaccin'].toString()),
-                  //       //   subtitle: Text(snapshot.value['dayvaccin'].toString()),
-                  //       // );
-                  //       return InfoVaccinItem(
-                  //         icon: "assets/icons/username.svg",
-                  //         name: name,
-                  //         typevaccin: typevaccin,
-                  //         birthday: birthday,
-                  //       );
-                  //     } else {
-                  //       return Center(
-                  //         child: Container(
-                  //           alignment: Alignment.center,
-                  //           child: const Text(
-                  //             "Vui lòng kiểm tra lại kết nối mạng",
-                  //             style: TextStyle(color: Colors.red, fontSize: 18),
-                  //           ),
-                  //         ),
-                  //       );
-                  //     }
-                  //   }
-                  // ),
                 ],
               ),
             ),

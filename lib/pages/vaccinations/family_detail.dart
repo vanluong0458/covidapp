@@ -63,8 +63,15 @@ class _FamilyDetailState extends State<FamilyDetail> {
                   FutureBuilder<DatabaseEvent>(
                       future: dref.child(user.uid + "/afamily").once(),
                       builder: (context, snapshot) {
-                        if (snapshot.hasData) {
-                          return Column(
+                        return snapshot.data?.snapshot.value == null
+                        ? Container(
+                          height: 500,
+                          alignment: Alignment.center,
+                          child: const Center(
+                              child: Text("Không có dữ liệu", style: TextStyle(fontSize: 24, color: Colors.red)),
+                            ),
+                        )
+                        : Column(
                             children: (snapshot.data!.snapshot.value as Map)
                                 .values
                                 .map(
@@ -76,7 +83,7 @@ class _FamilyDetailState extends State<FamilyDetail> {
                                       var phone = value['phone'];
                                       var cccd = value['cccd'];
                                       var number = value['number'];
-                                      print(username);
+                                      //print(username);
                                       Navigator.of(context).push(MaterialPageRoute(
                                         builder: (_) => FamilyInjection(
                                           username: username,
@@ -98,9 +105,6 @@ class _FamilyDetailState extends State<FamilyDetail> {
                                 )
                                 .toList(),
                           );
-                        } else {
-                          return Container();
-                        }
                       })
                 ],
               ),

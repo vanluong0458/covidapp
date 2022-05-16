@@ -64,3 +64,45 @@ class Vaccin {
     ref.child(userId).child('afamily').push().set(userFVaccin);
   }
 }
+
+class Declaration {
+  final userCurrent = FirebaseAuth.instance.currentUser!;
+  void createUserDeclaration(String username, String birthday, String phone, String cccd, String gender, String job, String address, String dateDeclaration, String f0, String dateF0) {
+    _createUserDeclaration(userCurrent.uid, username, birthday, phone, cccd, gender, job, address, dateDeclaration, f0, dateF0);
+  }
+  _createUserDeclaration(String userId, String username, String birthday, String phone, String cccd, String gender, String job, String address, String dateDeclaration, String f0, String dateF0) {
+    var userDeclaration = {
+      "username": username,
+      "birthday": birthday,
+      "phone": phone,
+      "cccd": cccd,
+      "gender": gender,
+      "job": job,
+      "address": address,
+      "dateDeclaration": dateDeclaration,
+      "f0": f0,
+      "dateF0": dateF0,
+    };
+    DatabaseReference ref = FirebaseDatabase.instance.ref("userDeclaration");
+    ref.child(userId).child('person').push().set(userDeclaration);
+  }
+  void createFamilyDeclaration(String username, String birthday, String phone, String cccd, String gender, String job, String address, String dateDeclaration, String f0, String dateF0) {
+    _createFamilyDeclaration(userCurrent.uid, username, birthday, phone, cccd, gender, job, address, dateDeclaration, f0, dateF0);
+  }
+  _createFamilyDeclaration(String userId, String username, String birthday, String phone, String cccd, String gender, String job, String address, String dateDeclaration, String f0, String dateF0) {
+    var userDeclaration = {
+      "username": username,
+      "birthday": birthday,
+      "phone": phone,
+      "cccd": cccd,
+      "gender": gender,
+      "job": job,
+      "address": address,
+      "dateDeclaration": dateDeclaration,
+      "f0": f0,
+      "dateF0": dateF0,
+    };
+    DatabaseReference ref = FirebaseDatabase.instance.ref("userDeclaration");
+    ref.child(userId).child('family').push().set(userDeclaration);
+  }
+}
