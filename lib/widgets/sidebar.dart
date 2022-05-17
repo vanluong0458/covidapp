@@ -1,6 +1,7 @@
 import 'package:covid_app/pages/health_declaration/health_declaration.dart';
 import 'package:covid_app/pages/news.dart';
 import 'package:covid_app/pages/post_covid/post_covid.dart';
+import 'package:covid_app/pages/post_covid/video_post_covid.dart';
 import 'package:covid_app/pages/profile.dart';
 import 'package:covid_app/pages/vaccinations/vaccination.dart';
 import 'package:flutter/material.dart';
@@ -59,8 +60,8 @@ class SideBar extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.border_color_outlined),
-            title: const Text('Hau Covid', style: TextStyle(color: Colors.blue, fontSize: 18, fontWeight: FontWeight.bold)),
+            leading: const Icon(Icons.fiber_new_outlined),
+            title: const Text('Thông tin hậu Covid', style: TextStyle(color: Colors.blue, fontSize: 18, fontWeight: FontWeight.bold)),
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(builder: (context) => const PostCovid()));
             },

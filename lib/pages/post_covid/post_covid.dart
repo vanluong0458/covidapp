@@ -1,3 +1,4 @@
+import 'package:covid_app/pages/post_covid/video_post_covid.dart';
 import 'package:covid_app/widgets/call.dart';
 import 'package:covid_app/widgets/header.dart';
 import 'package:flutter/material.dart';
@@ -45,6 +46,38 @@ class _PostCovidState extends State<PostCovid> {
                 textTop: "Điều cần biết",
                 textBottom: "   Covid - 19",
                 textMiddle: "      về hậu"
+              ),
+              Container(
+                padding: const EdgeInsets.only(bottom: 20, left: 20, right: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () => Navigator.pop(context),
+                      child: const Text("Quay lại"),
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(Colors.green),
+                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                          )
+                        )
+                      )
+                    ),
+                    ElevatedButton(
+                      onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => const VideoPostCovid())),
+                      child: const Text("Video hậu Covid"),
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(Colors.green),
+                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                          )
+                        )
+                      )
+                    )
+                  ]
+                ),
               ),
               const Text(
                 'HỘI CHỨNG HẬU COVID LÀ GÌ?',
@@ -197,10 +230,13 @@ class _PostCovidState extends State<PostCovid> {
                 ),
               ),
               const SizedBox(height: 20),
-              const Text(
-                'GỌI HOTLINE CỦA BỘ Y TẾ: 19009095 KHI CÓ DẤU HIỆU NHƯ TRÊN',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.red),
-                textAlign: TextAlign.center,
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                child: const Text(
+                  'GỌI HOTLINE CỦA BỘ Y TẾ: 19009095 KHI CÓ DẤU HIỆU NHƯ TRÊN',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.red),
+                  textAlign: TextAlign.center,
+                ),
               ),
               const SizedBox(height: 100),
             ],

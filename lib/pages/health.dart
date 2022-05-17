@@ -71,7 +71,15 @@ class _HealthState extends State<Health> {
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => const QandA()));
                 },
-                child: const Text('Xem ngay')
+                child: const Text("Xem ngay"),
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.green),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                    )
+                  )
+                )
               ),
               const SizedBox(height: 50),
             ],

@@ -55,7 +55,7 @@ class _DashboardState extends State<Dashboard> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   const Text(
-                    "Thông tin dịch bệnh trong nước",
+                    "Thông tin dịch bệnh",
                     style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.bold,
