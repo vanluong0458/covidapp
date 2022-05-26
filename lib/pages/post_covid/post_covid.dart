@@ -65,6 +65,7 @@ class _PostCovidState extends State<PostCovid> {
                       )
                     ),
                     ElevatedButton(
+                      //onPressed: () {},
                       onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => const VideoPostCovid())),
                       child: const Text("Video hậu Covid"),
                       style: ButtonStyle(
