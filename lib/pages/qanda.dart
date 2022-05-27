@@ -61,19 +61,6 @@ class _QandAState extends State<QandA> {
                             ),
                           ),
                         ),
-                        Positioned(
-                          top: 10,
-                          right: 0,
-                          child: ElevatedButton(
-                            onPressed: () => Navigator.pop(context),
-                            child: const Icon(Icons.arrow_back_sharp, color: Colors.white),
-                            style: ElevatedButton.styleFrom(
-                              shape: const CircleBorder(),
-                              padding: const EdgeInsets.all(15),
-                              primary: Colors.blue,
-                            ),
-                          )
-                        ),
                         Container(),
                       ],
                     )

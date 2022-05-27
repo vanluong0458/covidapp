@@ -49,7 +49,23 @@ class _AddFamilyDeclarationState extends State<AddFamilyDeclaration> {
       debugPrint(_dateDeclaration);
       debugPrint(_gender);
     } else {
+      const snackBar = SnackBar(
+        content: Text(
+          'Khai báo thành công!',
+          style: TextStyle(
+            fontSize: 24,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        backgroundColor: Colors.green,
+        duration: Duration(seconds: 3),
+        shape: StadiumBorder(),
+        margin: EdgeInsets.symmetric(vertical:16, horizontal: 12),
+        behavior: SnackBarBehavior.floating,
+        elevation: 0,
+      );
       _declaration.createFamilyDeclaration(_userNameTextController.text, _birthdayTextController.text, _phoneTextController.text, _cccdTextController.text, _genderTextController.text, _jobTextController.text, _addressTextController.text, _dateDeclarationTextController.text, _f0TextController.text, _dateF0TextController.text);
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
   }
 

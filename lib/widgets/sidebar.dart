@@ -1,7 +1,6 @@
 import 'package:covid_app/login.dart';
 import 'package:covid_app/pages/health_declaration/health_declaration.dart';
 import 'package:covid_app/pages/post_covid/post_covid.dart';
-import 'package:covid_app/pages/profile.dart';
 import 'package:covid_app/pages/vaccinations/vaccination.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -38,13 +37,6 @@ class SideBar extends StatelessWidget {
       child: Wrap(
         runSpacing: 16,
         children: [
-          ListTile(
-            leading: const Icon(Icons.people_alt_outlined),
-            title: const Text('Hồ sơ cá nhân', style: TextStyle(color: Colors.blue, fontSize: 18, fontWeight: FontWeight.bold)),
-            onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Profile()));
-            },
-          ),
           ListTile(
             leading: const Icon(Icons.border_color_outlined),
             title: const Text('Khai báo tiêm chủng', style: TextStyle(color: Colors.blue, fontSize: 18, fontWeight: FontWeight.bold)),

@@ -1,4 +1,3 @@
-import 'package:covid_app/widgets/fire_base_auth.dart';
 import 'constant.dart';
 import 'package:covid_app/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -18,28 +17,29 @@ class _RegisterState extends State<Register> {
   final TextEditingController _passwordTextController = TextEditingController();
   final TextEditingController _confirmPasswordTextController = TextEditingController();
   final TextEditingController _emailTextController = TextEditingController();
-  final TextEditingController _userNameTextController = TextEditingController();
-  final TextEditingController _phoneTextController = TextEditingController();
+  //final TextEditingController _userNameTextController = TextEditingController();
+  //final TextEditingController _phoneTextController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   bool _showPass = false;
   bool _showConfirmPass = false;
 
   String _userEmail = '';
-  String _userName = '';
+  //String _userName = '';
   String _password = '';
   String _confirmPassword = '';
-  final String _phone = '';
+  //final String _phone = '';
 
-  final _fireAuth = FireAuth();
+  //final _fireAuth = FireAuth();
 
-  void signUp(String email, String password, String username, String phone, Function onSuccess) {
+  void signUp() {
+  //void signUp(String email, String password, String username, String phone, Function onSuccess) {
     final bool? isValid = _formKey.currentState!.validate();
     if (isValid == false) {
       debugPrint(_userEmail);
-      debugPrint(_userName);
+      //debugPrint(_userName);
       debugPrint(_password);
       debugPrint(_confirmPassword);
-      debugPrint(_phone);
+      //debugPrint(_phone);
     } else {
       const snackBar = SnackBar(
         content: Text(
@@ -59,7 +59,7 @@ class _RegisterState extends State<Register> {
       FirebaseAuth.instance.createUserWithEmailAndPassword(email: _emailTextController.text, password: _passwordTextController.text).then((value) {
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
       });
-      _fireAuth.signUp(email, password, username, phone, onSuccess);
+      //_fireAuth.signUp(email, password, username, phone, onSuccess);
     }
   }
 
@@ -194,60 +194,60 @@ class _RegisterState extends State<Register> {
                                 ),
                               ),
 
-                              Container(
-                                padding: const EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                  border: Border(bottom: BorderSide(color: Colors.grey.shade200)),
-                                ),
-                                child: TextFormField(
-                                  controller: _userNameTextController,
-                                  decoration: const InputDecoration(
-                                      hintText: "Họ và tên",
-                                      hintStyle: TextStyle(color: Colors.grey),
-                                      border: InputBorder.none
-                                  ),
-                                  validator: (value) {
-                                    if (value == null || value.trim().isEmpty) {
-                                      return 'Trường này không được để trống!';
-                                    }
-                                    if (value.trim().length < 8) {
-                                      return 'Họ và tên phải ít nhất 8 ký tự!';
-                                    }
-                                    // Return null if the entered username is valid
-                                    return null;
-                                  },
-                                  onChanged: (value) => _userName = value,
-                                ),
-                              ),
+                              // Container(
+                              //   padding: const EdgeInsets.all(10),
+                              //   decoration: BoxDecoration(
+                              //     border: Border(bottom: BorderSide(color: Colors.grey.shade200)),
+                              //   ),
+                              //   child: TextFormField(
+                              //     controller: _userNameTextController,
+                              //     decoration: const InputDecoration(
+                              //         hintText: "Họ và tên",
+                              //         hintStyle: TextStyle(color: Colors.grey),
+                              //         border: InputBorder.none
+                              //     ),
+                              //     validator: (value) {
+                              //       if (value == null || value.trim().isEmpty) {
+                              //         return 'Trường này không được để trống!';
+                              //       }
+                              //       if (value.trim().length < 8) {
+                              //         return 'Họ và tên phải ít nhất 8 ký tự!';
+                              //       }
+                              //       // Return null if the entered username is valid
+                              //       return null;
+                              //     },
+                              //     onChanged: (value) => _userName = value,
+                              //   ),
+                              // ),
 
-                              Container(
-                                padding: const EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                  border: Border(bottom: BorderSide(color: Colors.grey.shade200)),
-                                ),
-                                child: TextFormField(
-                                  controller: _phoneTextController,
-                                  decoration: const InputDecoration(
-                                      hintText: "Số điện thoại",
-                                      hintStyle: TextStyle(color: Colors.grey),
-                                      border: InputBorder.none
-                                  ),
-                                  validator: (value) {
-                                    if (value == null || value.trim().isEmpty) {
-                                      return 'Trường này không được để trống!';
-                                    }
-                                    if (value.trim().length != 10) {
-                                      return 'Số điện thoại phải có 10 chữ số!';
-                                    }
-                                    if (!regExp.hasMatch(value)) {
-                                      return 'Số điện thoại không hợp lệ!';
-                                    }
-                                    // Return null if the entered username is valid
-                                    return null;
-                                  },
-                                  onChanged: (value) => _userName = value,
-                                ),
-                              ),
+                              // Container(
+                              //   padding: const EdgeInsets.all(10),
+                              //   decoration: BoxDecoration(
+                              //     border: Border(bottom: BorderSide(color: Colors.grey.shade200)),
+                              //   ),
+                              //   child: TextFormField(
+                              //     controller: _phoneTextController,
+                              //     decoration: const InputDecoration(
+                              //         hintText: "Số điện thoại",
+                              //         hintStyle: TextStyle(color: Colors.grey),
+                              //         border: InputBorder.none
+                              //     ),
+                              //     validator: (value) {
+                              //       if (value == null || value.trim().isEmpty) {
+                              //         return 'Trường này không được để trống!';
+                              //       }
+                              //       if (value.trim().length != 10) {
+                              //         return 'Số điện thoại phải có 10 chữ số!';
+                              //       }
+                              //       if (!regExp.hasMatch(value)) {
+                              //         return 'Số điện thoại không hợp lệ!';
+                              //       }
+                              //       // Return null if the entered username is valid
+                              //       return null;
+                              //     },
+                              //     onChanged: (value) => _userName = value,
+                              //   ),
+                              // ),
 
                               Container(
                                 padding: const EdgeInsets.all(10),
@@ -338,9 +338,7 @@ class _RegisterState extends State<Register> {
                                 child: Center(
                                   child: TextButton(
                                     onPressed: () {
-                                      signUp(_emailTextController.text, _passwordTextController.text, _userNameTextController.text, _phoneTextController.text, () {
-                                        Navigator.push(context, MaterialPageRoute(builder: (context) => const Login()));
-                                      });
+                                      signUp();
                                     },
                                     child:  const Text("Đăng ký"),
                                     style: TextButton.styleFrom(primary: Colors.white),

@@ -37,7 +37,23 @@ class _AddInfoState extends State<AddInfo> {
       debugPrint(_phone);
       debugPrint(_number);
     } else {
+      const snackBar = SnackBar(
+        content: Text(
+          'Khai báo thành công!',
+          style: TextStyle(
+            fontSize: 24,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        backgroundColor: Colors.green,
+        duration: Duration(seconds: 3),
+        shape: StadiumBorder(),
+        margin: EdgeInsets.symmetric(vertical:16, horizontal: 12),
+        behavior: SnackBarBehavior.floating,
+        elevation: 0,
+      );
       _vaccin.createUserVaccin(_userNameTextController.text, _birthdayTextController.text, _phoneTextController.text, _cccdTextController.text, _numberTextController.text, _typevaccinTextController.text);
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
   }
 
