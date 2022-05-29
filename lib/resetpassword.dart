@@ -53,7 +53,7 @@ class _ResetPasswordState extends State<ResetPassword> {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        elevation: 0, // Độ cao tạo hiệu ứng bóng
+        elevation: 0,
         title: const Text(
           "Đổi Mật Khẩu Mới",
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
@@ -100,11 +100,9 @@ class _ResetPasswordState extends State<ResetPassword> {
                             if (value == null || value.trim().isEmpty) {
                               return 'Vui lòng nhập email của bạn!';
                             }
-                            // Check if the entered email has the right format
                             if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
                               return 'Vui lòng nhập email hợp lệ!';
                             }
-                            // Return null if the entered email is valid
                             return null;
                           },
                           style: const TextStyle(color: Colors.white),

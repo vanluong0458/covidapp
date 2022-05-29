@@ -54,6 +54,7 @@ class _AddInfoState extends State<AddInfo> {
       );
       _vaccin.createUserVaccin(_userNameTextController.text, _birthdayTextController.text, _phoneTextController.text, _cccdTextController.text, _numberTextController.text, _typevaccinTextController.text);
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      Navigator.pop(context);
     }
   }
 
@@ -140,7 +141,6 @@ class _AddInfoState extends State<AddInfo> {
                             if (value.trim().length < 8) {
                               return 'Họ và tên phải ít nhất 8 ký tự!';
                             }
-                            // Return null if the entered username is valid
                             return null;
                           },
                           onChanged: (value) => _userName = value,
@@ -174,7 +174,6 @@ class _AddInfoState extends State<AddInfo> {
                             if (value.trim().length != 10) {
                               return 'Trường này phải có ít nhất 10 ký tự!';
                             }
-                            // Return null if the entered username is valid
                             return null;
                           },
                           onChanged: (value) => _birthday = value,
@@ -211,7 +210,6 @@ class _AddInfoState extends State<AddInfo> {
                             if (!regExp.hasMatch(value)) {
                               return 'Số điện thoại không hợp lệ!';
                             }
-                            // Return null if the entered username is valid
                             return null;
                           },
                           onChanged: (value) => _phone = value,
@@ -245,7 +243,6 @@ class _AddInfoState extends State<AddInfo> {
                             if (value.trim().length != 12) {
                               return 'Trường này phải có 12 chữ số!';
                             }
-                            // Return null if the entered username is valid
                             return null;
                           },
                           onChanged: (value) => _cccd = value,
@@ -276,7 +273,6 @@ class _AddInfoState extends State<AddInfo> {
                             if (value == null || value.trim().isEmpty) {
                               return 'Trường này không được để trống!';
                             }
-                            // Return null if the entered username is valid
                             return null;
                           },
                           onChanged: (value) => _number = value,
@@ -310,7 +306,6 @@ class _AddInfoState extends State<AddInfo> {
                             if (value.trim().length < 6) {
                               return 'Trường này phải có ít nhất 6 ký tự!';
                             }
-                            // Return null if the entered username is valid
                             return null;
                           },
                           onChanged: (value) => _typevaccin = value,
@@ -331,7 +326,6 @@ class _AddInfoState extends State<AddInfo> {
                     child: TextButton(
                       onPressed: () {
                         _createUserVaccin();
-                        Navigator.pop(context);
                       },
                       child:  const Text("Xác nhận", style: TextStyle(fontSize: 18),),
                       style: TextButton.styleFrom(primary: Colors.white,),

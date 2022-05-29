@@ -17,29 +17,20 @@ class _RegisterState extends State<Register> {
   final TextEditingController _passwordTextController = TextEditingController();
   final TextEditingController _confirmPasswordTextController = TextEditingController();
   final TextEditingController _emailTextController = TextEditingController();
-  //final TextEditingController _userNameTextController = TextEditingController();
-  //final TextEditingController _phoneTextController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   bool _showPass = false;
   bool _showConfirmPass = false;
 
   String _userEmail = '';
-  //String _userName = '';
   String _password = '';
   String _confirmPassword = '';
-  //final String _phone = '';
-
-  //final _fireAuth = FireAuth();
 
   void signUp() {
-  //void signUp(String email, String password, String username, String phone, Function onSuccess) {
     final bool? isValid = _formKey.currentState!.validate();
     if (isValid == false) {
       debugPrint(_userEmail);
-      //debugPrint(_userName);
       debugPrint(_password);
       debugPrint(_confirmPassword);
-      //debugPrint(_phone);
     } else {
       const snackBar = SnackBar(
         content: Text(
@@ -59,38 +50,8 @@ class _RegisterState extends State<Register> {
       FirebaseAuth.instance.createUserWithEmailAndPassword(email: _emailTextController.text, password: _passwordTextController.text).then((value) {
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
       });
-      //_fireAuth.signUp(email, password, username, phone, onSuccess);
     }
   }
-
-  // void _trySubmitForm() {
-  //   final bool? isValid = _formKey.currentState!.validate();
-  //   if (isValid == false) {
-  //     debugPrint(_userEmail);
-  //     debugPrint(_userName);
-  //     debugPrint(_password);
-  //     debugPrint(_confirmPassword);
-  //   } else {
-  //     const snackBar = SnackBar(
-  //       content: Text(
-  //         'Đăng ký thành công!',
-  //         style: TextStyle(
-  //           fontSize: 24,
-  //         ),
-  //         textAlign: TextAlign.center,
-  //       ),
-  //       backgroundColor: Colors.green,
-  //       duration: Duration(seconds: 3),
-  //       shape: StadiumBorder(),
-  //       margin: EdgeInsets.symmetric(vertical:16, horizontal: 12),
-  //       behavior: SnackBarBehavior.floating,
-  //       elevation: 0,
-  //     );
-  //     FirebaseAuth.instance.createUserWithEmailAndPassword(email: _emailTextController.text, password: _passwordTextController.text).then((value) {
-  //       ScaffoldMessenger.of(context).showSnackBar(snackBar);
-  //     });
-  //   }
-  // }
   
   @override
   Widget build(BuildContext context) {
@@ -115,14 +76,14 @@ class _RegisterState extends State<Register> {
             Container(
               padding: const EdgeInsets.only(left: 40, top: 20, right: 20),
               height: 170,
-              width: double.infinity, // Chiếm toàn bộ chiều ngang màn hình
+              width: double.infinity,
               decoration: const BoxDecoration(
                 image: DecorationImage(image: AssetImage("assets/images/virus.png"))
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: 20), // Khoảng cách so với phần tử bên trên
+                  const SizedBox(height: 20),
                   Expanded(
                     child: Stack(
                       children: [
@@ -183,71 +144,14 @@ class _RegisterState extends State<Register> {
                                     if (value == null || value.trim().isEmpty) {
                                       return 'Vui lòng nhập email của bạn!';
                                     }
-                                    // Check if the entered email has the right format
                                     if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
                                       return 'Email không hợp lệ!';
                                     }
-                                    // Return null if the entered email is valid
                                     return null;
                                   },
                                   onChanged: (value) => _userEmail = value,
                                 ),
                               ),
-
-                              // Container(
-                              //   padding: const EdgeInsets.all(10),
-                              //   decoration: BoxDecoration(
-                              //     border: Border(bottom: BorderSide(color: Colors.grey.shade200)),
-                              //   ),
-                              //   child: TextFormField(
-                              //     controller: _userNameTextController,
-                              //     decoration: const InputDecoration(
-                              //         hintText: "Họ và tên",
-                              //         hintStyle: TextStyle(color: Colors.grey),
-                              //         border: InputBorder.none
-                              //     ),
-                              //     validator: (value) {
-                              //       if (value == null || value.trim().isEmpty) {
-                              //         return 'Trường này không được để trống!';
-                              //       }
-                              //       if (value.trim().length < 8) {
-                              //         return 'Họ và tên phải ít nhất 8 ký tự!';
-                              //       }
-                              //       // Return null if the entered username is valid
-                              //       return null;
-                              //     },
-                              //     onChanged: (value) => _userName = value,
-                              //   ),
-                              // ),
-
-                              // Container(
-                              //   padding: const EdgeInsets.all(10),
-                              //   decoration: BoxDecoration(
-                              //     border: Border(bottom: BorderSide(color: Colors.grey.shade200)),
-                              //   ),
-                              //   child: TextFormField(
-                              //     controller: _phoneTextController,
-                              //     decoration: const InputDecoration(
-                              //         hintText: "Số điện thoại",
-                              //         hintStyle: TextStyle(color: Colors.grey),
-                              //         border: InputBorder.none
-                              //     ),
-                              //     validator: (value) {
-                              //       if (value == null || value.trim().isEmpty) {
-                              //         return 'Trường này không được để trống!';
-                              //       }
-                              //       if (value.trim().length != 10) {
-                              //         return 'Số điện thoại phải có 10 chữ số!';
-                              //       }
-                              //       if (!regExp.hasMatch(value)) {
-                              //         return 'Số điện thoại không hợp lệ!';
-                              //       }
-                              //       // Return null if the entered username is valid
-                              //       return null;
-                              //     },
-                              //     onChanged: (value) => _userName = value,
-                              //   ),
-                              // ),
 
                               Container(
                                 padding: const EdgeInsets.all(10),
@@ -272,7 +176,6 @@ class _RegisterState extends State<Register> {
                                         if (value.trim().length < 8) {
                                           return 'Mật khẩu phải ít nhất 8 ký tự!';
                                         }
-                                        // Return null if the entered password is valid
                                         return null;
                                       },
                                       onChanged: (value) => _password = value,
@@ -307,11 +210,9 @@ class _RegisterState extends State<Register> {
                                         if (value == null || value.isEmpty) {
                                           return 'Trường này không được để trống!';
                                         }
-
                                         if (value != _password) {
                                           return 'Mật khẩu nhập lại không đúng!';
                                         }
-
                                         return null;
                                       },
                                       onChanged: (value) => _confirmPassword = value,
@@ -325,9 +226,7 @@ class _RegisterState extends State<Register> {
                                   ],
                                 ),
                               ),
-
                               const SizedBox(height: 40),
-                              // #register
                               Container(
                                 height: 50,
                                 margin: const EdgeInsets.symmetric(horizontal: 50),

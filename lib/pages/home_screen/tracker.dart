@@ -51,7 +51,6 @@ class _TrackerState extends State<Tracker> {
               children: <Widget>[
                 NavigationOption(
                   title: "Thế giới",
-                  //icon: MaterialCommunityIcons.earth,
                   selected: navigationStatus == NavigationStatus.global,
                   onSelected: () {
                     setState(() {
@@ -61,7 +60,6 @@ class _TrackerState extends State<Tracker> {
                 ),
                 NavigationOption(
                   title: "Các quốc gia",
-                  //icon: Ionicons.md_flag,
                   selected: navigationStatus == NavigationStatus.country,
                   onSelected: () {
                     setState(() {

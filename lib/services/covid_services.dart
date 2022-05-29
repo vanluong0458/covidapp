@@ -18,7 +18,6 @@ class CovidService {
   Future<List<CountrySummaryChartModel>> getCountrySummary(String slug) async {
     final data = await http.Client()
         .get(Uri.parse("https://api.covid19api.com/total/dayone/country/" + slug));
-
     if (data.statusCode != 200) throw Exception();
 
     List<CountrySummaryChartModel> summaryList =
@@ -27,8 +26,6 @@ class CovidService {
             .map((item) => CountrySummaryChartModel.fromJson(item))
             .take(90)
             .toList();
-
     return summaryList;
   }
-
 }

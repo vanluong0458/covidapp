@@ -17,7 +17,6 @@ class NewsScreen extends StatefulWidget {
 class _NewsScreenState extends State<NewsScreen> {
   // ignore: constant_identifier_names
   static const String FEED_URL = 'https://thanhnien.vn/rss/thoi-su/vuot-qua-covid-19-296.rss';
-  //https://bvphcnbg.com/download/rss/COVID-19/ https://covid19.gov.vn/rss
 
   RssFeed? _feed;
   late String _title;

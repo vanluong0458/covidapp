@@ -19,7 +19,7 @@ class MyHeader extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.only(left: 40, top: 20, right: 20),
         height: 350,
-        width: double.infinity, // Chiếm toàn bộ chiều ngang màn hình
+        width: double.infinity,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topRight,
@@ -35,7 +35,7 @@ class MyHeader extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 20), // Khoảng cách so với phần tử bên trên
+            const SizedBox(height: 20),
             Expanded(
               child: Stack(
                 children: [
@@ -56,7 +56,7 @@ class MyHeader extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Container(), // ???
+                  Container(),
                 ],
               )
             ),
@@ -76,12 +76,10 @@ class MyClipper extends CustomClipper<Path> {
     path.lineTo(size.width, 0);
     path.close();
     return path;
-    //throw UnimplementedError();
   }
 
   @override
   bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
-    //throw UnimplementedError();
     return false;
   }
 }

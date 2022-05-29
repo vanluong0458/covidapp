@@ -60,14 +60,14 @@ class _LoginState extends State<Login> {
             Container(
               padding: const EdgeInsets.only(left: 40, top: 20, right: 20),
               height: 170,
-              width: double.infinity, // Chiếm toàn bộ chiều ngang màn hình
+              width: double.infinity,
               decoration: const BoxDecoration(
                 image: DecorationImage(image: AssetImage("assets/images/virus.png"))
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: 20), // Khoảng cách so với phần tử bên trên
+                  const SizedBox(height: 20),
                   Expanded(
                     child: Stack(
                       children: [
@@ -109,8 +109,7 @@ class _LoginState extends State<Login> {
                     padding: const EdgeInsets.all(30),
                     child: Column(
                       children: [
-                        const SizedBox(height: 10,),
-                        // #email, #password
+                        const SizedBox(height: 10),
                         Form(
                           key: _formRegisterKey,
                           child: Column(
@@ -131,11 +130,9 @@ class _LoginState extends State<Login> {
                                     if (value == null || value.trim().isEmpty) {
                                       return 'Vui lòng nhập email của bạn!';
                                     }
-                                    // Check if the entered email has the right format
                                     if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
                                       return 'Vui lòng nhập email hợp lệ!';
                                     }
-                                    // Return null if the entered email is valid
                                     return null;
                                   },
                                   onChanged: (value) => _userEmail = value,
@@ -165,7 +162,6 @@ class _LoginState extends State<Login> {
                                         if (value.trim().length < 8) {
                                           return 'Mật khẩu phải ít nhất 8 ký tự!';
                                         }
-                                        // Return null if the entered password is valid
                                         return null;
                                       },
                                       onChanged: (value) => _password = value,

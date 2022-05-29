@@ -51,7 +51,6 @@ class _VaccinationState extends State<Vaccination> {
               children: <Widget>[
                 NavigationOption(
                   title: "Cá nhân",
-                  //icon: MaterialCommunityIcons.earth,
                   selected: navigationStatus == NavigationStatus.personal,
                   onSelected: () {
                     setState(() {
@@ -61,7 +60,6 @@ class _VaccinationState extends State<Vaccination> {
                 ),
                 NavigationOption(
                   title: "Gia đình",
-                  //icon: Ionicons.md_flag,
                   selected: navigationStatus == NavigationStatus.family,
                   onSelected: () {
                     setState(() {

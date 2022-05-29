@@ -66,6 +66,7 @@ class _AddFamilyDeclarationState extends State<AddFamilyDeclaration> {
       );
       _declaration.createFamilyDeclaration(_userNameTextController.text, _birthdayTextController.text, _phoneTextController.text, _cccdTextController.text, _genderTextController.text, _jobTextController.text, _addressTextController.text, _dateDeclarationTextController.text, _f0TextController.text, _dateF0TextController.text);
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      Navigator.pop(context);
     }
   }
 
@@ -160,7 +161,6 @@ class _AddFamilyDeclarationState extends State<AddFamilyDeclaration> {
                             if (value.trim().length < 8) {
                               return 'Họ và tên phải ít nhất 8 ký tự!';
                             }
-                            // Return null if the entered username is valid
                             return null;
                           },
                           onChanged: (value) => _userName = value,
@@ -194,7 +194,6 @@ class _AddFamilyDeclarationState extends State<AddFamilyDeclaration> {
                             if (value.trim().length != 10) {
                               return 'Trường này phải có ít nhất 10 ký tự!';
                             }
-                            // Return null if the entered username is valid
                             return null;
                           },
                           onChanged: (value) => _birthday = value,
@@ -231,7 +230,6 @@ class _AddFamilyDeclarationState extends State<AddFamilyDeclaration> {
                             if (!regExp.hasMatch(value)) {
                               return 'Số điện thoại không hợp lệ!';
                             }
-                            // Return null if the entered username is valid
                             return null;
                           },
                           onChanged: (value) => _phone = value,
@@ -265,7 +263,6 @@ class _AddFamilyDeclarationState extends State<AddFamilyDeclaration> {
                             if (value.trim().length != 12) {
                               return 'Trường này phải có 12 chữ số!';
                             }
-                            // Return null if the entered username is valid
                             return null;
                           },
                           onChanged: (value) => _cccd = value,
@@ -296,7 +293,6 @@ class _AddFamilyDeclarationState extends State<AddFamilyDeclaration> {
                             if (value == null || value.trim().isEmpty) {
                               return 'Trường này không được để trống!';
                             }
-                            // Return null if the entered username is valid
                             return null;
                           },
                           onChanged: (value) => _gender = value,
@@ -327,7 +323,6 @@ class _AddFamilyDeclarationState extends State<AddFamilyDeclaration> {
                             if (value == null || value.trim().isEmpty) {
                               return 'Trường này không được để trống!';
                             }
-                            // Return null if the entered username is valid
                             return null;
                           },
                           onChanged: (value) => _job = value,
@@ -358,7 +353,6 @@ class _AddFamilyDeclarationState extends State<AddFamilyDeclaration> {
                             if (value == null || value.trim().isEmpty) {
                               return 'Trường này không được để trống!';
                             }
-                            // Return null if the entered username is valid
                             return null;
                           },
                           onChanged: (value) => _address = value,
@@ -392,7 +386,6 @@ class _AddFamilyDeclarationState extends State<AddFamilyDeclaration> {
                             if (value.trim().length != 10) {
                               return 'Trường này phải có ít nhất 10 ký tự!';
                             }
-                            // Return null if the entered username is valid
                             return null;
                           },
                           onChanged: (value) => _dateDeclaration = value,
@@ -423,7 +416,6 @@ class _AddFamilyDeclarationState extends State<AddFamilyDeclaration> {
                             if (value == null || value.trim().isEmpty) {
                               return 'Trường này không được để trống!';
                             }
-                            // Return null if the entered username is valid
                             return null;
                           },
                           onChanged: (value) => _f0 = value,
@@ -457,7 +449,6 @@ class _AddFamilyDeclarationState extends State<AddFamilyDeclaration> {
                             if (value.trim().length != 10) {
                               return 'Trường này phải có ít nhất 10 ký tự!';
                             }
-                            // Return null if the entered username is valid
                             return null;
                           },
                           onChanged: (value) => _dateF0 = value,
@@ -478,7 +469,6 @@ class _AddFamilyDeclarationState extends State<AddFamilyDeclaration> {
                     child: TextButton(
                       onPressed: () {
                         _createFamilyDeclaration();
-                        Navigator.pop(context);
                       },
                       child:  const Text("Xác nhận", style: TextStyle(fontSize: 18),),
                       style: TextButton.styleFrom(primary: Colors.white,),
