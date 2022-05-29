@@ -1,4 +1,5 @@
 import 'package:covid_app/constant.dart';
+import 'package:covid_app/pages/health_declaration/health_declaration.dart';
 import 'package:covid_app/widgets/fire_base_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -35,7 +36,7 @@ class _AddPerDeclarationState extends State<AddPerDeclaration> {
 
   final _declaration = Declaration();
 
-  void _createUserDeclaration() {
+  Future _createUserDeclaration() async {
     final bool? isValid = _formVaccinationKey.currentState!.validate();
     if (isValid == false) {
       debugPrint(_birthday);
@@ -64,9 +65,10 @@ class _AddPerDeclarationState extends State<AddPerDeclaration> {
         behavior: SnackBarBehavior.floating,
         elevation: 0,
       );
-      _declaration.createUserDeclaration(_userNameTextController.text, _birthdayTextController.text, _phoneTextController.text, _cccdTextController.text, _genderTextController.text, _jobTextController.text, _addressTextController.text, _dateDeclarationTextController.text, _f0TextController.text, _dateF0TextController.text);
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-      Navigator.pop(context);
+      await _declaration.createUserDeclaration(_userNameTextController.text.trim(), _birthdayTextController.text.trim(), _phoneTextController.text.trim(), _cccdTextController.text.trim(), _genderTextController.text.trim(), _jobTextController.text.trim(), _addressTextController.text.trim(), _dateDeclarationTextController.text.trim(), _f0TextController.text.trim(), _dateF0TextController.text.trim()).then((value) {
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        Navigator.of(context).push(MaterialPageRoute(builder: (_) => const HealthDeclaration(),));
+      });
     }
   }
 

@@ -83,7 +83,6 @@ class _FamilyDetailState extends State<FamilyDetail> {
                                       var phone = value['phone'];
                                       var cccd = value['cccd'];
                                       var number = value['number'];
-                                      //print(username);
                                       Navigator.of(context).push(MaterialPageRoute(
                                         builder: (_) => FamilyInjection(
                                           username: username,

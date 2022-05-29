@@ -1,4 +1,5 @@
 import 'package:covid_app/constant.dart';
+import 'package:covid_app/pages/vaccinations/vaccination.dart';
 import 'package:covid_app/widgets/fire_base_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -27,7 +28,7 @@ class _AddInfoState extends State<AddInfo> {
 
   final _vaccin = Vaccin();
 
-  void _createUserVaccin() {
+  Future _createUserVaccin() async {
     final bool? isValid = _formVaccinationKey.currentState!.validate();
     if (isValid == false) {
       debugPrint(_birthday);
@@ -52,9 +53,10 @@ class _AddInfoState extends State<AddInfo> {
         behavior: SnackBarBehavior.floating,
         elevation: 0,
       );
-      _vaccin.createUserVaccin(_userNameTextController.text, _birthdayTextController.text, _phoneTextController.text, _cccdTextController.text, _numberTextController.text, _typevaccinTextController.text);
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-      Navigator.pop(context);
+      await _vaccin.createUserVaccin(_userNameTextController.text.trim(), _birthdayTextController.text.trim(), _phoneTextController.text.trim(), _cccdTextController.text.trim(), _numberTextController.text.trim(), _typevaccinTextController.text.trim()).then((value) {
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        Navigator.of(context).push(MaterialPageRoute(builder: (_) => const Vaccination(),));
+      });
     }
   }
 
